@@ -1,112 +1,145 @@
-# Agriculture-E-Commerce-Website
+# FromToTable
 
-## Developers
+[![npm version](https://badge.fury.io/js/fromto-table.svg)](https://badge.fury.io/js/fromto-table)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-- **Developer:** Sanjan B M (sanjanacharaya1234@gmail.com)
+`FromToTable` is a React component library that provides a customizable and editable "From-To" table. This table allows users to input and edit data in a structured format, making it ideal for applications that require tracking changes over time or comparing two sets of data.
 
-## Description
+## Table of Contents
 
-An ecommerce store built with MERN stack, and utilizes third party API's. This ecommerce store enable three main different flows or implementations:
+- [Installation](#installation)
+- [Usage](#usage)
+- [Props](#props)
+- [Examples](#examples)
+- [Contributing](#contributing)
+- [License](#license)
 
-1. Buyers browse the store categories, products and brands
-2. Sellers or Merchants manage their own brand component
-3. Admins manage and control the entire store components 
+## Installation
 
+You can install `FromToTable` via npm:
 
-* features:
-  * Node provides the backend environment for this application
-  * Express middleware is used to handle requests, routes
-  * Mongoose schemas to model the application data
-  * React for displaying UI components
-  * Redux to manage application's state
-  * Redux Thunk middleware to handle asynchronous redux actions
-
-
-## Database Seed
-
-* The seed command will create an admin user in the database
-* The email and password are passed with the command as arguments
-* Like below command, replace brackets with email and password. 
-* For more information, see code [here](server/utils/seed.js)
-
-```
-npm run seed:db [email-***@****.com] [password-******] // This is just an example.
+```bash
+npm install fromto-table
 ```
 
+Or via yarn:
 
-## Install
-
-Some basic Git commands are:
-
-```
-$ git clone https://github.com:Manthan-19/Agriculture-E-Commerce-Website.git
-$ cd project
-$ npm install
-
+```bash
+yarn add fromto-table
 ```
 
-## Setup
+## Usage
 
-```
- Create .env file that include:
+Import and use the `FromToTable` component in your React application:
 
-  * MONGO_URI & JWT_SECRET
-  * PORT & BASE_SERVER_URL & BASE_API_URL & BASE_CLIENT_URL
-  * MAILCHIMP_KEY & MAILCHIMP_LIST_KEY => Mailchimp configuration
-  * MAILGUN_KEY & MAILGUN_DOMAIN & MAILGUN_EMAIL_SENDER => Mailgun configuration
-  * GOOGLE_CLIENT_ID & GOOGLE_CLIENT_SECRET & GOOGLE_CALLBACK_URL => Google Auth configuration
-  * FACEBOOK_CLIENT_ID & FACEBOOK_CLIENT_SECRET & FACEBOOK_CALLBACK_URL => Facebook Auth configuration
-  * AWS_ACCESS_KEY_ID & AWS_SECRET_ACCESS_KEY & AWS_REGION & AWS_BUCKET_NAME => AWS configuration
-```
+```jsx
+import React, { useState } from 'react';
+import FromToTable from 'fromto-table';
 
-## Start development
+function App() {
+  const [data, setData] = useState([
+    { id: 1, from: 'Value 1', to: 'Value 2' },
+    { id: 2, from: 'Value 3', to: 'Value 4' },
+  ]);
 
-```
-$ npm run dev
-```
+  const handleDataChange = (updatedData) => {
+    setData(updatedData);
+  };
 
-## Simple build for production
+  return (
+    <div className="App">
+      <h1>From-To Table Example</h1>
+      <FromToTable data={data} onDataChange={handleDataChange} />
+    </div>
+  );
+}
 
-```
-$ npm run build
-```
-
-## Run build for production
-
-```
-$ npm start
+export default App;
 ```
 
+## Props
 
-## Languages & tools
+| Prop             | Type     | Default | Description                                                                 |
+|------------------|----------|---------|-----------------------------------------------------------------------------|
+| `data`           | `Array`  | `[]`    | Array of objects representing the table rows. Each object should have `id`, `from`, and `to` properties. |
+| `onDataChange`   | `Function` | `() => {}` | Callback function that is called whenever the table data changes. Receives the updated data array as an argument. |
+| `columns`        | `Array`  | `[{ label: 'From', key: 'from' }, { label: 'To', key: 'to' }]` | Array of column definitions. Each object should have `label` and `key` properties. |
 
-- [Node](https://nodejs.org/en/)
+## Examples
 
-- [Express](https://expressjs.com/)
+### Basic Example
 
-- [Mongoose](https://mongoosejs.com/)
+```jsx
+import React, { useState } from 'react';
+import FromToTable from 'fromto-table';
 
-- [React](https://reactjs.org/)
+function App() {
+  const [data, setData] = useState([
+    { id: 1, from: 'Value 1', to: 'Value 2' },
+    { id: 2, from: 'Value 3', to: 'Value 4' },
+  ]);
 
-- [Webpack](https://webpack.js.org/)
+  const handleDataChange = (updatedData) => {
+    setData(updatedData);
+  };
 
+  return (
+    <div className="App">
+      <h1>Basic From-To Table</h1>
+      <FromToTable data={data} onDataChange={handleDataChange} />
+    </div>
+  );
+}
 
-### Code Formatter
+export default App;
+```
 
-- Add a `.vscode` directory
-- Create a file `settings.json` inside `.vscode`
-- Install Prettier - Code formatter in VSCode
-- Add the following snippet:  
+### Custom Columns
 
-```json
+```jsx
+import React, { useState } from 'react';
+import FromToTable from 'fromto-table';
 
-    {
-      "editor.formatOnSave": true,
-      "prettier.singleQuote": true,
-      "prettier.arrowParens": "avoid",
-      "prettier.jsxSingleQuote": true,
-      "prettier.trailingComma": "none",
-      "javascript.preferences.quoteStyle": "single",
-    }
+function App() {
+  const [data, setData] = useState([
+    { id: 1, origin: 'Location 1', destination: 'Location 2' },
+    { id: 2, origin: 'Location 3', destination: 'Location 4' },
+  ]);
 
+  const columns = [
+    { label: 'Origin', key: 'origin' },
+    { label: 'Destination', key: 'destination' },
+  ];
+
+  const handleDataChange = (updatedData) => {
+    setData(updatedData);
+  };
+
+  return (
+    <div className="App">
+      <h1>Custom Columns From-To Table</h1>
+      <FromToTable data={data} columns={columns} onDataChange={handleDataChange} />
+    </div>
+  );
+}
+
+export default App;
+```
+
+## Contributing
+
+Contributions are welcome! Please follow these guidelines:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix.
+3. Commit your changes and push to your branch.
+4. Open a pull request.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+---
+
+**Author**: [Sanjan B M](https://github.com/sanjanb)
 ```
