@@ -2,7 +2,7 @@
 
 ## Developers
 
-- **Current Developer:** Sanjan B M (sanjanacharaya1234@gmail.com)
+- **Developer:** Sanjan B M (sanjanacharaya1234@gmail.com)
 
 ## Description
 
@@ -110,4 +110,3 @@ $ npm start
     }
 
 ```
-# FromToTable
