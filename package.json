@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://Manthan-19/Agriculture-E-Commerce-Website.git"
+    "url": "https://github.com/sanjanb/FromToTable.git"
   },
   "keywords": [
     "node",
@@ -37,9 +37,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Manthan-19/Agriculture-E-Commerce-Website/issues"
+    "url": "https://github.com/sanjanb/FromToTable.git/issues"
   },
-  "homepage": "https://github.com/Manthan-19/Agriculture-E-Commerce-Website#readme",
+  "homepage": "https://github.com/sanjanb/FromToTable.git#readme",
   "dependencies": {
     "@fontsource/poppins": "^4.5.9",
     "autosuggest-highlight": "^3.1.1",
