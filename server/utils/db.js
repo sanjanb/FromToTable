@@ -13,7 +13,8 @@ const setupDB = async () => {
       .connect(database.url, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useFindAndModify: false
+        useFindAndModify: false,
+        family: 4 // Use IPv4, skip trying IPv6
       })
       .then(() =>
         console.log(`${chalk.green('✓')} ${chalk.blue('MongoDB Connected!')}`)
