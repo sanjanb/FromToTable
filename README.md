@@ -142,4 +142,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 **Author**: [Sanjan B M](https://github.com/sanjanb)
-```
